@@ -19,7 +19,6 @@ RUN set -ex \
     libpng-dev \
     libfreetype6-dev \
     postgresql-contrib\
-    python-mpltoolkits.basemap \
  && packages=' \
     numpy \
     scipy \
@@ -27,6 +26,7 @@ RUN set -ex \
     plotly \
     psycopg2 \
     queries \
+    pandas \
  ' \
  && pip3 install $packages \
  && apt-get purge -y --auto-remove $buildDeps \
