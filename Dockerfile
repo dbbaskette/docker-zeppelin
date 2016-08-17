@@ -7,6 +7,8 @@ RUN set -ex \
     build-essential \
     pkg-config \
     gfortran \
+    libpq-dev \
+    python-dev \
  ' \
  && apt-get update && apt-get install -y --no-install-recommends \
     $buildDeps \
@@ -14,9 +16,17 @@ RUN set -ex \
     wget \
     liblapack-dev \
     libopenblas-dev \
+    libpng-dev \
+    libfreetype6-dev \
+    postgresql-contrib\
+    python-mpltoolkits.basemap \
  && packages=' \
     numpy \
     scipy \
+    matplotlib \
+    plotly \
+    psycopg2 \
+    queries \
  ' \
  && pip3 install $packages \
  && apt-get purge -y --auto-remove $buildDeps \
@@ -68,4 +78,5 @@ RUN set -ex \
 
 ADD about.json $ZEPPELIN_NOTEBOOK_DIR/2BH1SW5AH/note.json
 WORKDIR $ZEPPELIN_HOME
+VOLUME $ZEPPELIN_HOME/notebook
 CMD ["bin/zeppelin.sh"]
