@@ -27,7 +27,7 @@ RUN set -ex \
     psycopg2 \
     queries \
     pandas \
-    sqlalchemy
+    sqlalchemy \
  ' \
  && pip3 install $packages \
  && apt-get purge -y --auto-remove $buildDeps \
